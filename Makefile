@@ -6,7 +6,7 @@
 #    By: iwillens <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/31 22:38:06 by aroque            #+#    #+#              #
-#    Updated: 2020/04/09 17:57:37 by iwillens         ###   ########.fr        #
+#    Updated: 2020/04/09 20:42:53 by iwillens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC		=	${SRC_DIR}/ft_strlen.s	\
 SRCBONUS =	${SRC_DIR}/ft_list_push_front_bonus.s \
 			${SRC_DIR}/ft_list_size_bonus.s \
 			${SRC_DIR}/ft_list_sort_bonus.s \
-			${SRC_DIR}/ft_atoi_base_bonus.s
+			${SRC_DIR}/ft_atoi_base_bonus.s \
+			${SRC_DIR}/ft_list_remove_if_bonus.s
 
 OBJ_DIR	=	./build
 OBJ		=	$(patsubst ${SRC_DIR}/%.s, ${OBJ_DIR}/%.o, ${SRC})
@@ -41,6 +42,8 @@ CC_FLAGS	=	-Wall			\
  				-Wextra			\
  				-Werror			\
 				-Wno-nullability-completeness \
+				-fsanitize=address \
+				-g \
  				-I${INCLUDE}	\
  				-L.				\
  				-lasm

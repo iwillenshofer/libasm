@@ -6,13 +6,13 @@
 /*   By: iwillens <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/09 13:30:33 by iwillens          #+#    #+#             */
-/*   Updated: 2020/04/09 14:21:26 by iwillens         ###   ########.fr       */
+/*   Updated: 2020/04/09 23:12:20 by iwillens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm_bonus.h"
 
-static void	ft_putnbr(int nb)
+static void		ft_putnbr(int nb)
 {
 	long int	n;
 	char		c;
@@ -29,7 +29,7 @@ static void	ft_putnbr(int nb)
 	ft_write(1, &c, 1);
 }
 
-static void	ft_putstr(char *s)
+static void		ft_putstr(char *s)
 {
 	int	i;
 
@@ -41,45 +41,56 @@ static void	ft_putstr(char *s)
 	}
 }
 
-void		print_list(t_list *elem)
+static void		print_list(t_list *elem, char *title)
 {
 	t_list *head;
 
+	ft_putstr("************** ");
+	ft_putstr(title);
+	ft_putstr(" ************** \n");
 	head = elem;
-	ft_putstr("\n\n********Unsorted List ******\n");
 	while (elem)
 	{
 		ft_putstr(elem->data);
 		ft_putstr("\n");
 		elem = elem->next;
 	}
-	elem = head;
-	ft_list_sort(&elem, ft_strcmp);
-	ft_putstr("\n\n********Sorted List ******\n");
-	while (elem)
-	{
-		ft_putstr(elem->data);
-		ft_putstr("\n");
-		elem = elem->next;
-	}
+	ft_putstr("*******************  List size: ");
+	ft_putnbr(ft_list_size(head));
+	ft_putstr("  ******************** \n\n");
 }
 
-int			main(void)
+static void		free_fct(void *elem)
 {
-	t_list *elem;
+	if (elem)
+		free(elem);
+}
+
+int				main(void)
+{
+	t_list	*elem;
+	char	*string;
+	char	*base;
 
 	elem = NULL;
-	ft_list_push_front(&elem, "banana");
-	ft_list_push_front(&elem, "manga");
-	ft_list_push_front(&elem, "abacate");
-	ft_list_push_front(&elem, "uva");
-	ft_list_push_front(&elem, "cereja");
-	ft_list_push_front(&elem, "abacaxi");
-	ft_list_push_front(&elem, "amora");
-	ft_list_push_front(&elem, "pessego");
-	ft_list_push_front(&elem, "inhame");
-	ft_putstr("\n****List size: ");
-	ft_putnbr(ft_list_size(elem));
-	print_list(elem);
+	ft_list_push_front(&elem, ft_strdup("banana"));
+	ft_list_push_front(&elem, ft_strdup("manga"));
+	ft_list_push_front(&elem, ft_strdup("abacate"));
+	ft_list_push_front(&elem, ft_strdup("uva"));
+	ft_list_push_front(&elem, ft_strdup("amora"));
+	ft_list_push_front(&elem, ft_strdup("pessego"));
+	print_list(elem, "      Unsorted List      ");
+	ft_list_sort(&elem, ft_strcmp);
+	print_list(elem, "       Sorted List       ");
+	ft_list_remove_if(&elem, "inhame", ft_strcmp, free_fct);
+	print_list(elem, "List with Removed Element");
+	string = ft_strdup("10100101");
+	base = ft_strdup("01");
+	ft_putstr("*** ft_atoi_base -> string: '");
+	ft_putstr(string);
+	ft_putstr("', base: '");
+	ft_putstr(base);
+	ft_putstr("'. Result: ");
+	ft_putnbr(ft_atoi_base(string, base));
 	return (0);
 }
