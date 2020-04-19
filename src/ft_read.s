@@ -22,12 +22,12 @@
 ; rdx -> bytes						rdx -> bytes
 ; rax -> opcode
 
-		global      _ft_read
+		global      ft_read
 		extern		___error
 		section     .text
-_ft_read:
+ft_read:
 		push		rsp
-		mov			rax, 0x2000003	; read opcode
+		mov			rax, 0x3		; read opcode
 		syscall						; calls read, if error sets flags
 		jc err						; check for errors in flags, if found jump to err
 		jmp			return			; if no errors, rax has the return value of read syscall 

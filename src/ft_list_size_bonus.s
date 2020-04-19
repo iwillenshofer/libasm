@@ -16,13 +16,13 @@
 ;               |                                              _|              #
 ; **************************************************************************** #
 
-global	_ft_list_size
+global	ft_list_size
 section	.text
 
 ; int ft_list_size(t_list *begin_list)
 ; rdi -> *begin_list
 ; rax -> list_size
-_ft_list_size:
+ft_list_size:
 	xor	rax, rax			;initialize rax
 count:
 	cmp	rdi, 0x0			;check if address is null

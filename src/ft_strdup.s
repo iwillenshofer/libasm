@@ -16,23 +16,23 @@
 ;               |                                              _|              #
 ; **************************************************************************** #
 
-extern	_malloc
-extern	_ft_strlen
-extern	_ft_strcpy
+extern	malloc
+extern	ft_strlen
+extern	ft_strcpy
 extern	___error
-global	_ft_strdup
+global	ft_strdup
 
 section	.text
 
-_ft_strdup:
+ft_strdup:
 	xor		rax, rax
 
 mem_alloc:
-	call	_ft_strlen		; ft_strlen(rdi)
+	call	ft_strlen		; ft_strlen(rdi)
 	push	rdi				; save input address on stack
 	mov		rdi, rax		; copy result of ft_strlen to counter
 	inc		rdi				; increment counter (\0 allocation)
-	call	_malloc			; malloc(rdi)
+	call	malloc			; malloc(rdi)
 	pop		rdi				; remove input address from stack
 	cmp		rax, 0x0		; protect malloc
 	jne		copy			; jump to copy if malloc not zero
@@ -46,7 +46,7 @@ treat_error:
 copy:
 	mov		rsi, rdi		; copy destination to source
 	mov		rdi, rax		; copy malloc return address to rdi
-	call	_ft_strcpy		; ft_strcpy(rdi, rsi)
+	call	ft_strcpy		; ft_strcpy(rdi, rsi)
 	jmp		return
 
 return:

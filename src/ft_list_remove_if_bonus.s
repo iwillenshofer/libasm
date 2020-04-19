@@ -1,10 +1,10 @@
-	global _ft_list_remove_if
-	extern	_free
+	global ft_list_remove_if
+	extern	free
 	section .text
 
 ;void ft_list_remove_if(t_list **begin_list, void *data_ref,
 ;						int (*cmp)(), void (*free_fct)(void *));
-_ft_list_remove_if:
+ft_list_remove_if:
 	push	r12					; R12 and R13 are preserved
 	push	r13					;  as per calling convention
 	mov		r8, rdi				; [head of the list]
@@ -50,7 +50,7 @@ _ft_list_remove_if:
 	push	r10					; as the Free function is an outside function
 	push	r11					;  the registers used by _ft_list_sort must
 	mov		rdi, r10			;  be preserved
-	call	_free				; free() function is called
+	call	free				; free() function is called
 	pop		r11
 	pop		r10
 	pop		r9

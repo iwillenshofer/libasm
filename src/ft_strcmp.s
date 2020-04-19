@@ -16,7 +16,7 @@
 ;               |                                              _|              #
 ; **************************************************************************** #
 
-global	_ft_strcmp
+global	ft_strcmp
 
 section	.text
 
@@ -30,7 +30,7 @@ section	.text
 ; rdx	-> data register
 ; dl	-> data register (last 8 bits)
 
-_ft_strcmp:
+ft_strcmp:
 	xor	rcx, rcx				; clear the variables
 	xor	rax, rax
 	xor	rdx, rdx

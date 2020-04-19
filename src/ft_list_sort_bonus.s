@@ -16,7 +16,7 @@
 ;               |                                              _|              #
 ; **************************************************************************** #
 
-global _ft_list_sort
+global ft_list_sort
 section .text
 
 ; void _ft_swap(void *rdi, void *rsi);
@@ -28,7 +28,7 @@ _ft_swap:
 	ret
 
 ; void ft_list_sort(t_list **begin_list, int (*cmp)());
-_ft_list_sort:
+ft_list_sort:
 	mov	r8, rdi					; [head of the list]
 	mov	r9, rsi					; cmp function will be called at R9
 	mov r10, [r8]				; r10 -> (data) pointer

@@ -16,8 +16,8 @@
 ;               |                                              _|              #
 ; **************************************************************************** #
 
-global _ft_list_push_front
-extern	_malloc
+global ft_list_push_front
+extern	malloc
 
 section .text
 
@@ -26,7 +26,7 @@ _ft_create_elem:
 xor		rcx, rcx
 push	rdi
 mov		rdi, 16				; sets rdi to 16 bytes to create malloc
-call	_malloc;
+call	malloc;
 pop		rdi
 cmp		rax, 0
 je		.malloc_error
@@ -39,7 +39,7 @@ ret
 _ft_list_push_front:
 push	rdi
 mov		rdi, rsi
-call	_ft_create_elem		; rax is the new elem created with malloc
+call	ft_create_elem		; rax is the new elem created with malloc
 pop		rdi
 mov		rdx, [rdi]			; rdx is tmp for first elem
 mov		[rax + 8], rdx

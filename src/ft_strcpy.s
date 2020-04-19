@@ -23,11 +23,11 @@
 ; fifth argument:   r8
 ; sixth argument:   r9
 
-global _ft_strcpy
+global ft_strcpy
 
 section .text
 
-_ft_strcpy:
+ft_strcpy:
 	xor rcx, rcx	; clear counter
 	mov rax, rdi	; set dest addres to rax (for return)
 	

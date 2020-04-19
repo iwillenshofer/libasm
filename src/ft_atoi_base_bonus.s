@@ -10,8 +10,8 @@
 ;                                                                             #
 ; *************************************************************************** #
 
-	global _ft_atoi_base
-	extern _ft_strlen
+	global ft_atoi_base
+	extern ft_strlen
 	section .text
 
 
@@ -151,7 +151,7 @@ _ft_get_numbers:
 	xor		r9, r9
 	push	rdi				; this section sets rsi to rdi to get the size of 
 	mov		rdi, rsi		; the base calling strlen function
-	call	_ft_strlen		;  (base size is the len of the original rsi)
+	call	ft_strlen		;  (base size is the len of the original rsi)
 	mov		r8, rax			; the base size is stored in R8.
 	pop		rdi				; now rdi and rsi are in its original state.
 .looping:
@@ -253,7 +253,7 @@ _find_duplicate:
 _check_base:
 	xor		rax, rax
 	mov		rdi, rsi
-	call	_ft_strlen		; checks if base len is <= 1, in which case it is
+	call	ft_strlen		; checks if base len is <= 1, in which case it is
 	cmp		rax, 1			;  invalid. if not, copy len to the 3rd argument 
 	jle		.invalid		;  (rcx), which will be used in all _find_n_str
 	mov		rdx, rax		;  function call.
@@ -300,7 +300,7 @@ _check_base:
 ;				 any character outside the base is found.
 ; Changed registers: RCX, RAX, RDX.
 ; Return:	RAX-> Decimal representation of the converted number
-_ft_atoi_base:
+ft_atoi_base:
 	cmp		rsi, 0			; Checks if the char* pointers passed to our
 	je		.invalid_args	;  function are not null
 	cmp		rdi, 0
