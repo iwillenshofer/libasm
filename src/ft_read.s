@@ -23,18 +23,20 @@
 ; rax -> opcode
 
 		global      ft_read
-		extern		___error
+		extern		__errno_location
 		section     .text
 ft_read:
 		push		rsp
-		mov			rax, 0x3		; read opcode
+		mov			rax, 0x0		; read opcode
 		syscall						; calls read, if error sets flags
-		jc err						; check for errors in flags, if found jump to err
+		cmp			rax, 0x0
+		jl			err				; check for errors in flags, if found jump to err
 		jmp			return			; if no errors, rax has the return value of read syscall 
 
 err:
+		imul		rax, -1
 		mov			rdx, rax
-		call		___error
+		call		__errno_location
 		mov			qword[rax], rdx	; if error is found, we set rax to -1
 		mov			rax, -1			; return  rax
 

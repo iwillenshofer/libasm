@@ -36,10 +36,10 @@ mov		[rax + 8], rcx
 ret
 
 ; void ft_list_push_front(t_list **begin_list, void *data);
-_ft_list_push_front:
+ft_list_push_front:
 push	rdi
 mov		rdi, rsi
-call	ft_create_elem		; rax is the new elem created with malloc
+call	_ft_create_elem		; rax is the new elem created with malloc
 pop		rdi
 mov		rdx, [rdi]			; rdx is tmp for first elem
 mov		[rax + 8], rdx

@@ -42,11 +42,10 @@ CC_FLAGS	=	-Wall			\
  				-Wextra			\
  				-Werror			\
 				-Wno-nullability-completeness \
-				-fsanitize=address \
 				-g \
  				-I${INCLUDE}	\
  				-L.				\
- 				-lasm
+ 				-lasm -no-pie
 
 TEST_DIR	=	./test
 TEST		=	${TEST_DIR}/main.c

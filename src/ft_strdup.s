@@ -19,7 +19,7 @@
 extern	malloc
 extern	ft_strlen
 extern	ft_strcpy
-extern	___error
+extern	__errno_location
 global	ft_strdup
 
 section	.text
@@ -38,7 +38,7 @@ mem_alloc:
 	jne		copy			; jump to copy if malloc not zero
 
 treat_error:
-	call	___error		; error treatment: ___error returns
+	call	__errno_location; error treatment: ___error returns
 	mov		qword[rax], 12	;  the address of errno. We set the value
 	mov		rax, 0			;  of errno to ENOMEM (12), and then return 0.
 	jmp		return

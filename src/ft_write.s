@@ -17,7 +17,7 @@
 ; **************************************************************************** #
 
 global	ft_write
-extern	___error
+extern	__errno_location
 
 section	.text
 
@@ -30,14 +30,16 @@ section	.text
 
 ft_write:
 	push	rsp	
-	mov	rax, 0x4		; write
+	mov	rax, 0x1		; write
 	syscall				; the arguments are already set in place
-	jc	error_handling	; check if Carry Flag is on (error)
+	cmp rax, 0x0
+	jl	error_handling	; check if Carry Flag is on (error)
 	jmp return
 
 error_handling:
+	imul	rax, -1
 	mov		rdx, rax
-	call	___error
+	call	__errno_location
 	mov		qword[rax], rdx
 	mov		rax, -1
 	

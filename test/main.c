@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libasm.h"
+#include <fcntl.h>
 
 static void		ft_putstr(char *s)
 {
@@ -61,7 +62,7 @@ static void		exception_test(void)
 
 	ft_putstr("\n***** Exceptions:");
 	ft_putstr("\nft_read (Invalid Descriptor): ret-> ");
-	ret = ft_read(5, &buffer, 1);
+	ret = ft_read(4242, &buffer, 1);
 	ft_putnbr(ret);
 	ft_putstr("; errno: ");
 	ft_putnbr(errno);
@@ -76,12 +77,11 @@ static void		exception_test(void)
 
 int				main(void)
 {
-	int		len;
+	int	len;
 	char	*s;
-	int		ret;
 
 	exception_test();
-	ret = ft_write(1, "\n***** Normal Test: ", 20);
+	ft_write(1, "\n***** Normal Test: ", 20);
 	ft_putstr("\nft_write: '42 Disassembly'");
 	s = ft_strdup("42 Disassembly");
 	ft_putstr("\nft_strdup: Duplicando '42 Disassembly': ");
