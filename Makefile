@@ -6,7 +6,7 @@
 #    By: iwillens <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/31 22:38:06 by aroque            #+#    #+#              #
-#    Updated: 2020/04/09 20:42:53 by iwillens         ###   ########.fr        #
+#    Updated: 2020/04/19 19:26:33 by iwillens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ OBJ_BONUS	=	$(patsubst ${SRC_DIR}/%.s, ${OBJ_DIR}/%.o, ${SRCBONUS})
 INCLUDE	=	./include
 
 ASM			=	nasm
-ASM_FLAGS	=	-fmacho64
+ASM_FLAGS	=	-felf64
 
 AR_FLAGS	=	rcs
 
