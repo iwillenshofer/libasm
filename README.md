@@ -1,6 +1,6 @@
 <p align="center">
-	<img width="130px;" src="https://game.42sp.org.br/static/assets/images/42_logo_black.svg" align="center" alt="42" />&nbsp;&nbsp;&nbsp;
-	<img width="130px" src="https://game.42sp.org.br/static/assets/achievements/libasmm.png" align="center" alt="libasm" />
+	<img width="130px;" src="https://raw.githubusercontent.com/iwillenshofer/resources/main/images/42_logo_black.svg" align="center" alt="42" />&nbsp;&nbsp;&nbsp;
+	<img width="130px" src="https://raw.githubusercontent.com/iwillenshofer/resources/main/achievements/libasm.png" align="center" alt="libasm" />
 	<h1 align="center">libasm</h1>
 </p>
 <p align="center">
@@ -22,7 +22,7 @@
 
 > _The aim of this project is to get familiar with assembly language._
 
-[Download the Subject ⤓](en.subject.pdf)
+
 
 <br>
 
@@ -65,7 +65,7 @@ The `libasma.a` library is compiled with `nasm` and `make` utilities, so be sure
 ```bash
 # create a main file.
 $ make
-$ gcc -L. -lasm -no-pie main.c 
+$ gcc -L. -lasm -no-pie main.c
 $ ./a.out
 ```
 
