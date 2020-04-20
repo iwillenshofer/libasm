@@ -41,7 +41,6 @@ CC			=	gcc
 CC_FLAGS	=	-Wall			\
  				-Wextra			\
  				-Werror			\
-				-Wno-nullability-completeness \
 				-g \
  				-I${INCLUDE}	\
  				-L.				\

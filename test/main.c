@@ -77,7 +77,7 @@ static void		exception_test(void)
 
 int				main(void)
 {
-	int	len;
+	int		len;
 	char	*s;
 
 	exception_test();

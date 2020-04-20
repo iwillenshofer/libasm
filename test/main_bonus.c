@@ -82,7 +82,7 @@ int				main(void)
 	print_list(elem, "      Unsorted List      ");
 	ft_list_sort(&elem, ft_strcmp);
 	print_list(elem, "       Sorted List       ");
-	ft_list_remove_if(&elem, "inhame", ft_strcmp, free_fct);
+	ft_list_remove_if(&elem, "amora", ft_strcmp, free_fct);
 	print_list(elem, "List with Removed Element");
 	string = ft_strdup("10100101");
 	base = ft_strdup("01");
